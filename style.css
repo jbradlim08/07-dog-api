@@ -39,7 +39,8 @@ h1 i {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-select {
+#breed-select,
+#total-photo {
   padding: 12px 20px;
   font-size: 16px;
   font-family: 'Open Sans', sans-serif;
@@ -51,6 +52,11 @@ select {
   color: #e6f1ff;
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+#total-photo{
+  padding: 12px 12px;
+  min-width: 125px;
 }
 
 select:hover, select:focus {
