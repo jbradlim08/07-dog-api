@@ -30,7 +30,7 @@ function addBreedList(){
 
 function printDogImage(){
     const selectedBreed = breedSelect.value
-    const photo = totalPhoto.value || 1;
+    const photo = totalPhoto.value;
     if(selectedBreed){
         fetch(`https://dog.ceo/api/breed/${selectedBreed}/images/random/${photo}`)
             .then(response => response.json())
@@ -38,14 +38,19 @@ function printDogImage(){
                 gallery.innerHTML = '';
                 const dogImages = data.message;
                 console.log(dogImages)
+                
+                dogImages.forEach(dogImage => {
 
-                for(let i = 0; i < dogImages.length; i++){   
+                    const galleryItem = document.createElement('div');
+                    galleryItem.classList.add('gallery-item');
+                    
                     const img = document.createElement('img');
-                    img.src = dogImages[i];
+                    img.src = dogImage;
                     img.alt = selectedBreed;
                     
-                    gallery.appendChild(img);
-                }
+                    galleryItem.appendChild(img);
+                    gallery.appendChild(galleryItem);
+                })   
             })
     }else{
         gallery.innerHTML = '<p>Image not found</p>';
